@@ -9,19 +9,19 @@ import com.mostafapackage.state.BrushTool;
 import com.mostafapackage.state.Canvas;
 import com.mostafapackage.state.EraserTool;
 import com.mostafapackage.state.SelectionTool;
+import com.mostafapackage.strategy.*;
 
 public class Main {
 
     public static void main(String[] args) {
-	    var history = new BrowseHistory();
-		history.push("a");
-		history.push("b");
-		history.push("c");
+		Compressor compressor = new JpegCompressor();
+    	Filter filter = new BlackAndWhiteFilter();
 
-		Iterator historyIterator = history.createIterator();
-		while (historyIterator.hasNext()){
-			System.out.println(historyIterator.current());
-			historyIterator.next();
-		}
+    	var imageStore = new ImageStorage(compressor, filter);
+
+		imageStore.store("filename");
+		//we can use this
+		//var imageStore = new ImageStorage();
+		//imageStore.store(filename, new JpegCompressor(), new BlackAndWhiteFilter());
     }
 }

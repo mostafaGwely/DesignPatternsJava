@@ -3,25 +3,24 @@ package com.mostafapackage;
 import com.mostafapackage.iterator.BrowseHistory;
 import com.mostafapackage.iterator.Iterator;
 import com.mostafapackage.memento.Editor;import com.mostafapackage.memento.Editor;
-
 import com.mostafapackage.memento.History;
 import com.mostafapackage.state.BrushTool;
 import com.mostafapackage.state.Canvas;
 import com.mostafapackage.state.EraserTool;
 import com.mostafapackage.state.SelectionTool;
 import com.mostafapackage.strategy.*;
+import com.mostafapackage.template.AuditTrail;
+import com.mostafapackage.template.GenerateReport;
+import com.mostafapackage.template.TransferMoneyTask;
 
 public class Main {
 
     public static void main(String[] args) {
-		Compressor compressor = new JpegCompressor();
-    	Filter filter = new BlackAndWhiteFilter();
+		TransferMoneyTask transferMoneyTask = new TransferMoneyTask();
+		transferMoneyTask.execute();
 
-    	var imageStore = new ImageStorage(compressor, filter);
+		GenerateReport generateReport = new GenerateReport();
+		generateReport.execute();
 
-		imageStore.store("filename");
-		//we can use this
-		//var imageStore = new ImageStorage();
-		//imageStore.store(filename, new JpegCompressor(), new BlackAndWhiteFilter());
     }
 }

@@ -1,9 +1,11 @@
 package com.mostafapackage;
 
+import com.mostafapackage.command.*;
+import com.mostafapackage.command.editor.*;
+import com.mostafapackage.command.fx.Button;
 import com.mostafapackage.iterator.BrowseHistory;
 import com.mostafapackage.iterator.Iterator;
 import com.mostafapackage.memento.Editor;import com.mostafapackage.memento.Editor;
-import com.mostafapackage.memento.History;
 import com.mostafapackage.state.BrushTool;
 import com.mostafapackage.state.Canvas;
 import com.mostafapackage.state.EraserTool;
@@ -12,15 +14,36 @@ import com.mostafapackage.strategy.*;
 import com.mostafapackage.template.AuditTrail;
 import com.mostafapackage.template.GenerateReport;
 import com.mostafapackage.template.TransferMoneyTask;
+import org.w3c.dom.html.HTMLIsIndexElement;
 
 public class Main {
 
     public static void main(String[] args) {
-		TransferMoneyTask transferMoneyTask = new TransferMoneyTask();
-		transferMoneyTask.execute();
+//    	var service = new CustomerService();
+//    	var command = new AddCustomerCommand(service);
+//    	var button = new Button(command);
+//
+//    	button.click();
 
-		GenerateReport generateReport = new GenerateReport();
-		generateReport.execute();
+//		var composite = new CompositeCommand();
+//		composite.
+//				add(new ResizeCommand()).
+//				add(new BlackAndWhiteCommand());
+//
+//		composite.execute();
+//		composite.execute();
+
+		var history = new History();
+		var document = new HtmlDocument();
+		var undoCommand = new UndoCommand(history);
+
+		document.setContent("hello World");
+		var boldCommand = new BoldCommand(document, history);
+		boldCommand.execute();
+
+		System.out.println(document.getContent());
+		undoCommand.execute();
+		System.out.println(document.getContent());
 
     }
 }

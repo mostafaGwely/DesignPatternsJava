@@ -15,9 +15,9 @@ public class Subject {
         observerList.remove(o);
     }
 
-    public void notifyObservers() {
+    public void notifyObservers(int value) {
         for (var o : observerList) {
-            o.update();
+            o.update(value);
         }
     }
 }

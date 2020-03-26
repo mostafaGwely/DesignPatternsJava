@@ -6,6 +6,9 @@ import com.mostafapackage.command.fx.Button;
 import com.mostafapackage.iterator.BrowseHistory;
 import com.mostafapackage.iterator.Iterator;
 import com.mostafapackage.memento.Editor;import com.mostafapackage.memento.Editor;
+import com.mostafapackage.observer.Chart;
+import com.mostafapackage.observer.DataSource;
+import com.mostafapackage.observer.SpreadSheet;
 import com.mostafapackage.state.BrushTool;
 import com.mostafapackage.state.Canvas;
 import com.mostafapackage.state.EraserTool;
@@ -33,17 +36,27 @@ public class Main {
 //		composite.execute();
 //		composite.execute();
 
-		var history = new History();
-		var document = new HtmlDocument();
-		var undoCommand = new UndoCommand(history);
+//		var history = new History();
+//		var document = new HtmlDocument();
+//		var undoCommand = new UndoCommand(history);
+//
+//		document.setContent("hello World");
+//		var boldCommand = new BoldCommand(document, history);
+//		boldCommand.execute();
+//
+//		System.out.println(document.getContent());
+//		undoCommand.execute();
+//		System.out.println(document.getContent());
 
-		document.setContent("hello World");
-		var boldCommand = new BoldCommand(document, history);
-		boldCommand.execute();
+		var dataSource = new DataSource();
+		var sheet1 = new SpreadSheet();
+		var sheet2 = new SpreadSheet();
+		var chart = new Chart();
 
-		System.out.println(document.getContent());
-		undoCommand.execute();
-		System.out.println(document.getContent());
+		dataSource.addObserver(sheet1);
+		dataSource.addObserver(sheet2);
+		dataSource.addObserver(chart);
+		dataSource.setValue(60);
 
     }
 }

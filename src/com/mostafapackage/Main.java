@@ -5,6 +5,7 @@ import com.mostafapackage.command.editor.*;
 import com.mostafapackage.command.fx.Button;
 import com.mostafapackage.iterator.BrowseHistory;
 import com.mostafapackage.iterator.Iterator;
+import com.mostafapackage.mediator.ArticlesDialogBox;
 import com.mostafapackage.memento.Editor;import com.mostafapackage.memento.Editor;
 import com.mostafapackage.observer.Chart;
 import com.mostafapackage.observer.DataSource;
@@ -48,15 +49,18 @@ public class Main {
 //		undoCommand.execute();
 //		System.out.println(document.getContent());
 
-		var dataSource = new DataSource();
-		var sheet1 = new SpreadSheet(dataSource);
-		var sheet2 = new SpreadSheet(dataSource);
-		var chart = new Chart(dataSource);
+//		var dataSource = new DataSource();
+//		var sheet1 = new SpreadSheet(dataSource);
+//		var sheet2 = new SpreadSheet(dataSource);
+//		var chart = new Chart(dataSource);
+//
+//		dataSource.addObserver(sheet1);
+//		dataSource.addObserver(sheet2);
+//		dataSource.addObserver(chart);
+//		dataSource.setValue(60);
 
-		dataSource.addObserver(sheet1);
-		dataSource.addObserver(sheet2);
-		dataSource.addObserver(chart);
-		dataSource.setValue(60);
+		var dialog = new ArticlesDialogBox();
+		dialog.simulateUserInteraction();
 
     }
 }

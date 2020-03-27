@@ -1,15 +1,13 @@
 package com.mostafapackage.mediator;
 
-public class ArticlesDialogBox extends DialogBox {
-    private ListBox listBox = new ListBox(this);
-    private Button button = new Button(this);
-    private TextBox textBox = new TextBox(this);
-    @Override
-    public void changed(UIControl control) {
-        if(control == listBox)
-            articleSelected();
-        else if (control == textBox)
-            titleChanged();
+public class ArticlesDialogBox {
+    private ListBox listBox = new ListBox( );
+    private Button button = new Button( );
+    private TextBox textBox = new TextBox( );
+
+    public ArticlesDialogBox() {
+        listBox.attach(this::articleSelected);
+        textBox.attach(this::titleChanged);
     }
 
     public void simulateUserInteraction(){

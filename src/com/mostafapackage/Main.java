@@ -21,18 +21,20 @@ import com.mostafapackage.strategy.*;
 import com.mostafapackage.template.AuditTrail;
 import com.mostafapackage.template.GenerateReport;
 import com.mostafapackage.template.TransferMoneyTask;
+import com.mostafapackage.visitor.AnchorNode;
+import com.mostafapackage.visitor.HeadingNode;
+import com.mostafapackage.visitor.HighlightOperation;
+import com.mostafapackage.visitor.HtmlDocument;
 import com.sun.security.jgss.AuthorizationDataEntry;
 import org.w3c.dom.html.HTMLIsIndexElement;
 
 public class Main {
 
     public static void main(String[] args) {
-        //authenticator -> logger -> compressor
-        Compressor compressor = new Compressor(null);
-        Logger logger = new Logger(compressor);
-        Authenticator authenticator = new Authenticator(logger);
+      var document = new HtmlDocument();
+        document.add(new HeadingNode());
+        document.add(new AnchorNode());
 
-        WebServer webServer = new WebServer(authenticator);
-        webServer.handle(new HttpRequest("mostfafa", "123"));
+        document.execute(new HighlightOperation());
     }
 }
